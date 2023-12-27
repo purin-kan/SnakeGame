@@ -11,7 +11,7 @@ import java.awt.Point;
 public class GamePanel extends JPanel {
 
     List<Point> snakeBody = new ArrayList<>();
-    
+
     Random random = new Random();
 
     private static final int GAME_WIDTH = 800;
@@ -32,36 +32,36 @@ public class GamePanel extends JPanel {
         snakeBody.add(new Point(snakeX, snakeY));
     }
 
-@Override
-protected void paintComponent(Graphics g) {
-    super.paintComponent(g);
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
 
-    // Center the game to window
-    int x = (getWidth() - GAME_WIDTH) / 2;
-    int y = (getHeight() - GAME_HEIGHT) / 2;
+        // Center the game to window
+        int x = (getWidth() - GAME_WIDTH) / 2;
+        int y = (getHeight() - GAME_HEIGHT) / 2;
 
-    // Draw the background
-    g.setColor(Color.BLACK);
-    g.fillRect(x, y, GAME_WIDTH, GAME_HEIGHT);
+        // Draw the background
+        g.setColor(Color.BLACK);
+        g.fillRect(x, y, GAME_WIDTH, GAME_HEIGHT);
 
-    // Draw the grid
-    g.setColor(Color.DARK_GRAY);
-    for (int i = 0; i < GAME_WIDTH; i += CELL_SIZE) {
-        for (int j = 0; j < GAME_HEIGHT; j += CELL_SIZE) {
-            g.drawRect(x + i, y + j, CELL_SIZE, CELL_SIZE);
+        // Draw the grid
+        g.setColor(Color.DARK_GRAY);
+        for (int i = 0; i < GAME_WIDTH; i += CELL_SIZE) {
+            for (int j = 0; j < GAME_HEIGHT; j += CELL_SIZE) {
+                g.drawRect(x + i, y + j, CELL_SIZE, CELL_SIZE);
+            }
         }
-    }
 
-    // Draw the snake
-    for (Point point : snakeBody) {
-        g.setColor(Color.GREEN);
-        g.fillRect(x + point.x * CELL_SIZE, y + point.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
-    }
+        // Draw the snake
+        for (Point point : snakeBody) {
+            g.setColor(Color.GREEN);
+            g.fillRect(x + point.x * CELL_SIZE, y + point.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+        }
 
-    // Draw the food
-    g.setColor(Color.RED);
-    g.fillRect(x + foodX, y + foodY, CELL_SIZE, CELL_SIZE);
-}
+        // Draw the food
+        g.setColor(Color.RED);
+        g.fillRect(x + foodX, y + foodY, CELL_SIZE, CELL_SIZE);
+    }
 
     public void setDirection(int directionX, int directionY) {
         this.directionX = directionX;
@@ -71,7 +71,7 @@ protected void paintComponent(Graphics g) {
     public void move() {
         // Update the position of the snake
         int newSnakeX = snakeX + directionX * CELL_SIZE;
-        int newSnakeY = snakeY + directionY * CELL_SIZE;    
+        int newSnakeY = snakeY + directionY * CELL_SIZE;
 
         // Check if the snake collides with itself
         // ...
